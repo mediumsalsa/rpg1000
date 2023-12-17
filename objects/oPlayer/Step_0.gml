@@ -1,6 +1,6 @@
 // Initialize movement variables // Adjust the speed as needed
-var moveX = 0;
-var moveY = 0;
+ moveX = 0;
+ moveY = 0;
 
 
 
@@ -8,9 +8,6 @@ var moveY = 0;
 oPlayer.image_speed = 1;
 
 
-
-var prev_x = x;
-var prev_y = y;
 
 
 
@@ -106,111 +103,69 @@ if (moveX != 0 && moveY != 0) {
 
 
 // Move the player
-x += moveX;
-y += moveY;
+PlayerCollision();
 
-
-
-			if (tilemap_get_at_pixel(collision_layer, x, y) != 0)
-			{
-				x = prev_x;
-				y = prev_y;
-			}
-
-
-
-
-
-
-// Create a "swordCooldown" variable in the Create Event of the player object
- // Adjust to set the cooldown duration
-
-// Step Event of the player object
-if swordCooldown > 0 {
+if swordCooldown > 0 
+{
     swordCooldown -= 1;
 }
 
-if attackKey and swordCooldown == 0 {
-    // Get the mouse position'
+if (attackKey)
+{
+	image_index = 0;
+
 	attacking = true;
-	
-	moveSpeed = 0;
-	
-	var playerAngle = direction;
-	
-	
-    var mouseX = mouse_x;
-    var mouseY = mouse_y;
 	
 	oPlayer.sprite_index = sPlayerAttack;
 	
+    var mouseX = mouse_x;
+    var mouseY = mouse_y;
+		
 	if (mouseX > oPlayer.x )
 	{
 		oPlayer.image_xscale = 1
-		playerAngle = 0;
+
 	}
 	else if (mouseX < oPlayer.x)
 	{
 		oPlayer.image_xscale = -1
-		playerAngle = 180;
+
 	}
 	
 	
-	if (mouseY < oPlayer.y - 8 )
-	{
-		oPlayer.image_index = 1;
-		attackingUp = true;
-	}
 	else if (mouseY > oPlayer.x )
 	{
-		oPlayer.image_index = 0;
+		oPlayer.sprite_index = sPlayerAttack;
+ 
 	}
-
-	var dir = point_direction(x, y, mouseX, mouseY);
-
-    // Calculate the direction from the player to the mouse
-
-
-
-	if (attackingUp == true)
+	
+	
+	if (mouseY < oPlayer.y - 30)
 	{
-    var xOffset = lengthdir_x(8, dir); 
-    var yOffset = lengthdir_y(8, dir);
+		attackingUp = true;
+
+		oPlayer.sprite_index = sPlayerAttackUp;	
 
 	}
-	else if (attackingUp == false)
-	{
-    var xOffset = lengthdir_x(2, dir); 
-    var yOffset = lengthdir_y(2, dir);
+	
+}
 
-	}
 
-    // Create the sword object
-    var swordInstance = instance_create_layer(x + xOffset, y + yOffset, "Instances", oSword);
 
-    // Set the sword's direction (angle) if needed
-    swordInstance.direction = dir;
 
- // Get the player's current angle
 
-    // Calculate the relative angle between the player and the sword
-    var relativeAngle = dir - playerAngle;
 
-    // Adjust the relative angle to be in the range [-180, 180]
-    while (relativeAngle > 180) relativeAngle -= 360;
-    while (relativeAngle < -180) relativeAngle += 360;
 
-    // Set the sword's image_angle based on the relative angle
-    swordInstance.image_angle = relativeAngle;
 
     // Set the sword cooldown
     swordCooldown = swordCooldownMax;
 
-	swordInstance.alarm[0] = room_speed * 0.25;
 	
 	
+	//*/
 	
-}
+	
+
 
 
 oPlayer.depth = 0;

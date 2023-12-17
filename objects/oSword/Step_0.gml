@@ -1,5 +1,3 @@
-/// @description Insert description here
-// You can write your code in this editor
 
 
 if (oPlayer.image_xscale == -1)
@@ -12,7 +10,7 @@ else if (oPlayer.image_xscale == 1)
 	image_xscale = 1
 }
 
-if (mouse_y < oPlayer.y - 8)
+if (mouse_y < oPlayer.y - 30)
 {
 	oSword.depth = 100;
 }

@@ -1,7 +1,5 @@
 instance_destroy();
 
-
-
 if (oPlayer.attackingUp == true)
 {
 	oPlayer.sprite_index = sPlayerUp;

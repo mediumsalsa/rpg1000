@@ -110,82 +110,16 @@ if swordCooldown > 0
     swordCooldown -= 1;
 }
 
-if (attackKey)
-{
-	image_index = 0;
-
-	attacking = true;
 	
-	oPlayer.sprite_index = sPlayerAttack;
-	
-    var mouseX = mouse_x;
-    var mouseY = mouse_y;
-		
-	if (mouseX > oPlayer.x )
+	if (attackKey && swordCooldown <= 0)
 	{
-		oPlayer.image_xscale = 1
-
+		PlayerStateAttack();
 	}
-	else if (mouseX < oPlayer.x)
-	{
-		oPlayer.image_xscale = -1
-
-	}
-	
-	
-	else if (mouseY > oPlayer.x )
-	{
-		oPlayer.sprite_index = sPlayerAttack;
- 
-	}
-	
-	
-	if (mouseY < oPlayer.y - 30)
-	{
-		attackingUp = true;
-
-		oPlayer.sprite_index = sPlayerAttackUp;	
-
-	}
-	
-}
 
 
-
-
-
-
-
-
-    // Set the sword cooldown
-    swordCooldown = swordCooldownMax;
-
-	
-	
-	//*/
-	
-	
 
 
 
 oPlayer.depth = 0;
 
 
-/*
-// Calculate the direction from player to cursor
-var dir = point_direction(x, y, mouse_x, mouse_y);
-
-// Determine the closest direction (up, down, left, right)
-if (dir >= 0 && dir < 90) {
-    sprite_index = sPlayerUpR; // Cursor is below player
-}
-else if (dir >= 90 && dir < 180) {
-    sprite_index = sPlayerUpL; // Cursor is to the left of player
-}
-else if (dir >= 180 && dir < 270) {
-    sprite_index = sPlayerLeft; // Cursor is above player
-}
-else {
-    sprite_index = sPlayerRight; // Cursor is to the right of player
-}
-*/

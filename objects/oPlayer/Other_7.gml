@@ -1,10 +1,18 @@
 
 
-if (oPlayer.sprite_index == sPlayerAttack || oPlayer.sprite_index == sPlayerAttackUp)
+if (oPlayer.sprite_index == sPlayerAttack || oPlayer.sprite_index == sPlayerAttackUp ||  oPlayer.sprite_index == sPlayerAttackDown)
 {
+	
 	oPlayer.image_index = 0;
 	
-	oPlayer.sprite_index = sPlayer;
+	if (oPlayer.sprite_index == sPlayerAttackUp)
+	{
+		oPlayer.sprite_index = sPlayerUp;
+	}
+	else
+	{
+		oPlayer.sprite_index = sPlayer;
+	}
 	
 	attacking = false;
 }

@@ -38,5 +38,6 @@ function PlayerStateAttack()
 		
 	swordCooldown = swordCooldownMax;
 	
+	state = PlayerStateFree;
 
 }

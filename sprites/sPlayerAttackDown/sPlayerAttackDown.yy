@@ -74,7 +74,7 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "Player",
-    "path": "folders/Player.yy",
+    "name": "Player Attacks",
+    "path": "folders/Player/Player Attacks.yy",
   },
 }

@@ -9,10 +9,27 @@ if (oPlayer.sprite_index == sPlayerAttack || oPlayer.sprite_index == sPlayerAtta
 	{
 		oPlayer.sprite_index = sPlayerUp;
 	}
-	else
+	else if (oPlayer.sprite_index == sPlayerAttack)
 	{
 		oPlayer.sprite_index = sPlayer;
 	}
 	
 	attacking = false;
+}
+
+
+else if (oPlayer.sprite_index == sPlayerRoll || oPlayer.sprite_index == sPlayerRollUp)
+{
+	if (oPlayer.sprite_index == sPlayerRoll)
+	{
+		oPlayer.sprite_index = sPlayer;
+	}
+	else if (oPlayer.sprite_index == sPlayerRollUp)
+	{
+		oPlayer.sprite_index = sPlayerUp;
+	}
+	
+	rolling = false;
+	
+	
 }

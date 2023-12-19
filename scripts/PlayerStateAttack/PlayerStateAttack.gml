@@ -1,7 +1,7 @@
 function PlayerStateAttack()
 {
 	
-	
+
 		image_index = 0;
 
 		attacking = true;
@@ -36,8 +36,10 @@ function PlayerStateAttack()
 			 oPlayer.image_xscale = 1;
 		}
 		
-	swordCooldown = swordCooldownMax;
+	swordCooldown = swordCooldownMax;	
 	
 	state = PlayerStateFree;
+	
+	
 
 }

@@ -2,16 +2,7 @@
  moveX = 0;
  moveY = 0;
 
-
-
-
 oPlayer.image_speed = 1;
-
-
-
-
-
-
 
 upKey = keyboard_check(ord("W"));
 downKey = keyboard_check(ord("S"))
@@ -20,10 +11,18 @@ leftKey = keyboard_check(ord("A"))
 activateKey = keyboard_check_pressed(vk_space);
 attackKey = mouse_check_button_pressed(mb_left);
 
-script_execute(state);
 
 
-// Move the player
+if (!global.gamePaused)
+{
+	script_execute(state);
+	image_speed = 1;
+}
+else
+{
+	image_speed = 0;
+}
+
 
 
 if swordCooldown > 0 
@@ -36,13 +35,6 @@ if (attackKey && swordCooldown <= 0)
 {
 	state = PlayerStateAttack;
 }
-
-
-if (activateKey)
-{
-	state = PlayerStateRoll;
-}
-
 
 
 

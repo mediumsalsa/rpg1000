@@ -9,7 +9,7 @@ if (oPlayer.sprite_index == sPlayerAttack || oPlayer.sprite_index == sPlayerAtta
 	{
 		oPlayer.sprite_index = sPlayerUp;
 	}
-	else if (oPlayer.sprite_index == sPlayerAttack)
+	else if (oPlayer.sprite_index == sPlayerAttack || oPlayer.sprite_index == sPlayerAttackDown)
 	{
 		oPlayer.sprite_index = sPlayer;
 	}

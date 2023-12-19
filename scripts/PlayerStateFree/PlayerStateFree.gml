@@ -2,86 +2,72 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function PlayerStateFree(){
 
-	if (state == PlayerStateFree && !attacking && !rolling)
+	if (state == PlayerStateFree && !attacking)
 	{
-		if (upKey && downKey)
+		
+		inputDirection = point_direction(0, 0, rightKey - leftKey, downKey - upKey);
+		inputMagnitude = (rightKey - leftKey != 0) || (downKey - upKey != 0);
+		
+		
+		moveX = lengthdir_x(inputMagnitude * moveSpeed, inputDirection);
+		moveY = lengthdir_y(inputMagnitude * moveSpeed, inputDirection);
+		
+		if (inputMagnitude != 0)
 		{
-			oPlayer.sprite_index = sPlayerUp;
+			direction = inputDirection
 		}
-				if (rightKey && leftKey)
-				{
-					oPlayer.sprite_index = sPlayerUp;
-				}
-
-
-		if (moveX == 0 && moveY == 0)
-		{
-			if (oPlayer.sprite_index == sPlayerRunUp)
-			{
-				oPlayer.sprite_index = sPlayerUp;
-			}
-			else if (oPlayer.sprite_index == sPlayerRun)
-			{
-				oPlayer.sprite_index = sPlayer;
-			}
-	
-		}
+		
+		
+		
 
 		if (upKey) {
-		    moveY -= moveSpeed;
+		    //moveY -= moveSpeed;
 			oPlayer.sprite_index = sPlayerRunUp;
 		}
 
 		if (downKey) {
-		    moveY += moveSpeed;
+		    //moveY += moveSpeed;
 
 			oPlayer.sprite_index = sPlayerRun;
 		}
 
-		if (leftKey) {
-		    moveX -= moveSpeed;
+		if (leftKey) 
+		{
+		    //moveX -= moveSpeed;
 	
 			image_xscale = -1;
-		
-	
 			if (!upKey)
 			{
 
-					oPlayer.sprite_index = sPlayerRun;
+				oPlayer.sprite_index = sPlayerRun;
 			}
-			
-	
 		}
 
-		if (rightKey) {
-		    moveX += moveSpeed;
+
+		if (rightKey) 
+		{
+		   // moveX += moveSpeed;
 	
-				image_xscale = 1;
-				
-	
+			image_xscale = 1;
+			
 			if (!upKey)
 			{
 						oPlayer.sprite_index = sPlayerRun
 			}
 			
-	
+		}
+		
+		
+		if (activateKey)
+		{
+			state = PlayerStateRoll;
+			moveDistanceRemaining = rollDistance;
 		}
 		
 	}
 
+	PlayerCollision();
 
-
-
-// Normalize diagonal movement
-if (moveX != 0 && moveY != 0)
-{
-    moveX *= 0.7071; 
-    moveY *= 0.7071;
-}
-
-
-
-PlayerCollision();
 
 		if (moveX == 0 && moveY == 0)
 		{
@@ -95,6 +81,10 @@ PlayerCollision();
 			}
 	
 		}
+	
+	
+
+	
 	
 }
 
